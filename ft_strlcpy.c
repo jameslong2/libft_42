@@ -6,7 +6,7 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:02:34 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/13 17:11:51 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:14:50 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s);
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	h[3];
