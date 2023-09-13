@@ -6,13 +6,13 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:09:14 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/13 11:19:20 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:37:16 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	if (c < 101 || (c > 132 && c < 141) || c > 172)
+	if (c < 'A' || (c > 'Z' && c < 'a') || c > 'z')
 		return (0);
 	return (1);
 }

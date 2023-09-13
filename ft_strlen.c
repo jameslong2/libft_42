@@ -6,7 +6,7 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:30:21 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/13 11:31:12 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:35:10 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@ int	ft_strlen(const char *s)
 	l = 0;
 	while (s[l++])
 		;
+	l--;
 	return (l);
 }

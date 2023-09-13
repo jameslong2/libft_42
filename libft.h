@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 11:40:14 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/13 12:44:37 by jaucarri         ###   ########.fr       */
+/*   Created: 2023/09/13 12:47:47 by jaucarri          #+#    #+#             */
+/*   Updated: 2023/09/13 12:49:11 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-		((unsigned char *)b)[i++] = c;
-	return (b);
-}
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+void	*ft_memset(void *b, int c, size_t len);
+int		ft_strlen(const char *s);
