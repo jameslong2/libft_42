@@ -6,21 +6,21 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:07 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/18 18:24:54 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/19 08:32:35 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c);
+//char	*ft_strchr(const char *s, int c);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 size_t	ft_strlen(const char *s);
 
-char	*ft_strdup(const char *s1);
+//char	*ft_strdup(const char *s1);
 
-char	*ft_strtrim(char const *s1, char *s);
+//char	*ft_strtrim(char const *s1, char *s);
 
 int		strcount(char *s, char c)
 {
@@ -29,11 +29,16 @@ int		strcount(char *s, char c)
 	i = 1;
 	while (*s == c)
 		s++;
-	while (*s)
+	if (*s == 0)
+		return (-1);
+	if (c != '\0')
 	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != 0)
-			i++;
-		s++;
+		while (*s)
+		{
+			if (*s == c && *(s + 1) != c && *(s + 1) != 0)
+				i++;
+			s++;
+		}
 	}
 	return (i);
 }
@@ -55,31 +60,27 @@ char	*strstart(char *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**tmp;
-	int		i[2];
-	char	*mod;
+	int		i;
+	int		j;
 	char	*end;
-
-	mod = ft_strtrim(s, &c);
-	if (c == '\0' && ft_strchr(mod, c) == 0)
-		i[0] = 1;
-	else
-		i[0] = strcount(mod, c);
-	i[1] = 0;
-	tmp = (char **)malloc(i[0] * sizeof(char *));
+	
+	i = strcount((char *)s, c);
+	j = 0;
+	if (i == 0 && ft_strlen(s) > 0)
+		i = 1;
+	else if (ft_strlen(s) == 0 || i == -1)
+		i = 0;
+	tmp = (char **)malloc((size_t)(i + 1) * sizeof(char *));
 	if (tmp == 0)
 		return (0);
-	end = mod;
-	while (i[1] < i[0])
+	end = (char *)s;
+	while (j < i)
 	{
-		mod = strstart(end, c);
-		end = strend(mod, c);
-		if (i[0] == 1)
-			tmp[i[1]++] = ft_substr(mod, 0, ft_strlen(mod));
-		else
-			tmp[i[1]++] = ft_substr(mod, 0, (size_t)(end - mod) + 1);
-		if (tmp[i[1] - 1] == 0)
-			return (0);
+		s = (char const *)strstart(end, c);
+		end = strend((char *)s, c);
+		tmp[j] = ft_substr(s, 0, (int)(end - s));
+		j++;
 	}
-	free(mod);
+	tmp[j] = 0;
 	return (tmp);
 }
