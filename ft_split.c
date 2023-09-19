@@ -6,7 +6,7 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:07 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/19 08:32:35 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/19 09:32:51 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		strcount(char *s, char c)
 	int	i;
 
 	i = 1;
-	while (*s == c)
+	while (*s == c && *s)
 		s++;
 	if (*s == 0)
 		return (-1);
