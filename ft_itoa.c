@@ -53,7 +53,7 @@ char	*ft_itoa(int n)
 	if (temp <= 0)
 	{
 		temp *= -1;
-		extra+=2;
+		extra = 1;
 	}
 	while (temp >= 1)
 	{
@@ -61,11 +61,9 @@ char	*ft_itoa(int n)
 		counter++;
 	}
 	tmp = (char *)malloc((counter + extra + 1) * sizeof(char));
-	if (tmp == 0)
-		return (0);
-	if (n != 0)
+	if (n != 0 && tmp != 0)
 		recursiveitoa(tmp, n, poweritoa(10,counter - 1));
-	else
+	else if (tmp != 0)
 	{
 		tmp[0] = '0';
 		tmp[1] = '\0';
