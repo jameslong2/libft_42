@@ -1,5 +1,5 @@
 #include <stdlib.h>
-long	power(int num, int power)
+long	poweritoa(int num, int power)
 {
 	long	po;
 	long	i;
@@ -14,7 +14,7 @@ long	power(int num, int power)
 	return (po);
 }
 
-void	recursive(char *tmp, int nb, long div)
+void	recursiveitoa(char *tmp, int nb, long div)
 {
 	if (nb < 0)
 	{
@@ -30,7 +30,7 @@ void	recursive(char *tmp, int nb, long div)
 	if (div != 0)
 	{
 	    *tmp = ((long)nb / div) % 10 + '0';
-		recursive(tmp + 1, nb % div, div / 10);
+		recursiveitoa(tmp + 1, nb % div, div / 10);
 	}
 	else
 	{
@@ -64,7 +64,7 @@ char	*ft_itoa(int n)
 	if (tmp == 0)
 		return (0);
 	if (n != 0)
-		recursive(tmp, n, power(10,counter - 1));
+		recursiveitoa(tmp, n, poweritoa(10,counter - 1));
 	else
 	{
 		tmp[0] = '0';
