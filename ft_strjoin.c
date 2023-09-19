@@ -6,7 +6,7 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 09:42:07 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/17 11:03:42 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:20:25 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 int		ft_strlen(const char *s);
 
+void	initjoin(char const *s1, char const *s2, int *i)
+{
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = ft_strlen(s1);
+	i[3] = ft_strlen(s1) + ft_strlen(s2);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*tmp;
 	int		i[4];
 
-	i[0] = 0;
-	i[1] = 0;
-	i[2] = ft_strlen(s1);
-	i[3] = ft_strlen(s1) + ft_strlen(s2);
+	initjoin(s1, s2, i);
 	tmp = (char *)malloc(i[3] * sizeof(char) + 1);
 	if (tmp == 0)
 		return (0);
