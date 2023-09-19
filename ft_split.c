@@ -6,7 +6,7 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:07 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/19 10:49:17 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:51:28 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,41 @@ char	*strstart(char *s, char c)
 	return (s);
 }
 
+void	initsplit(int *i, char c, char const *s)
+{
+	i[0] = strcount((char *)s, c);
+	i[1] = 0;
+	if (i[0] == 0 && ft_strlen(s) > 0)
+		i[0] = 1;
+	else if (ft_strlen(s) == 0 || i[0] == -1)
+		i[0] = 0;
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**tmp;
-	int		i;
-	int		j;
+	int		i[2];
 	char	*end;
 
-	i = strcount((char *)s, c);
-	j = 0;
-	if (i == 0 && ft_strlen(s) > 0)
-		i = 1;
-	else if (ft_strlen(s) == 0 || i == -1)
-		i = 0;
-	tmp = (char **)malloc((size_t)(i + 1) * sizeof(char *));
+	end = (char *)s;
+	initsplit(i, c, s);
+	tmp = (char **)malloc((size_t)(i[0] + 1) * sizeof(char *));
 	if (tmp == 0)
 		return (0);
-	end = (char *)s;
-	while (j < i)
+	while (i[1] < i[0])
 	{
 		s = (char const *)strstart(end, c);
 		end = strend((char *)s, c);
-		tmp[j] = ft_substr(s, 0, (int)(end - s));
-		j++;
+		tmp[i[1]] = ft_substr(s, 0, (int)(end - s));
+		if (!tmp[i[1]])
+		{
+			while (i[1] >= 0)
+				free(tmp[i[1]--]);
+			free(tmp);
+			return (0);
+		}
+		i[1]++;
 	}
-	tmp[j] = 0;
+	tmp[i[1]] = 0;
 	return (tmp);
 }
