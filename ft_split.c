@@ -6,23 +6,17 @@
 /*   By: jaucarri <jaucarri@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:40:07 by jaucarri          #+#    #+#             */
-/*   Updated: 2023/09/19 09:32:51 by jaucarri         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:49:17 by jaucarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-//char	*ft_strchr(const char *s, int c);
-
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 size_t	ft_strlen(const char *s);
 
-//char	*ft_strdup(const char *s1);
-
-//char	*ft_strtrim(char const *s1, char *s);
-
-int		strcount(char *s, char c)
+int	strcount(char *s, char c)
 {
 	int	i;
 
@@ -63,7 +57,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 	char	*end;
-	
+
 	i = strcount((char *)s, c);
 	j = 0;
 	if (i == 0 && ft_strlen(s) > 0)
